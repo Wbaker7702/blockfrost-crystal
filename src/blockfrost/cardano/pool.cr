@@ -60,7 +60,7 @@ struct Blockfrost::Pool
     :history,
     Array(Event),
     "pools/#{pool_id}/history",
-    pool_id : String
+    pool_id : String # ameba:disable Lint/UselessAssign
   )
 
   def self.metadata(pool_id : String)
@@ -83,21 +83,21 @@ struct Blockfrost::Pool
     :delegators,
     Array(Delegator),
     "pools/#{pool_id}/delegators",
-    pool_id : String
+    pool_id : String # ameba:disable Lint/UselessAssign
   )
 
   Blockfrost.gets_all_with_order_and_pagination(
     :block_hashes,
     Array(String),
     "pools/#{pool_id}/blocks",
-    pool_id : String
+    pool_id : String # ameba:disable Lint/UselessAssign
   )
 
   Blockfrost.gets_all_with_order_and_pagination(
     :updates,
     Array(Update),
     "pools/#{pool_id}/updates",
-    pool_id : String
+    pool_id : String # ameba:disable Lint/UselessAssign
   )
 
   struct Abbreviated

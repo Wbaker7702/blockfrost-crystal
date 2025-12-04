@@ -27,7 +27,7 @@ struct Blockfrost::Transaction
   getter pool_retire_count : Int32
   getter asset_mint_or_burn_count : Int32
   getter redeemer_count : Int32
-  getter valid_contract : Bool
+  getter valid_contract : Bool # ameba:disable Naming/QueryBoolMethods
 
   def self.get(hash : String)
     Transaction.from_json(Client.get("txs/#{hash}"))
@@ -135,8 +135,8 @@ struct Blockfrost::Transaction
       include Shared::UTXOFields
 
       getter address : String
-      getter collateral : Bool
-      getter reference : Bool
+      getter collateral : Bool # ameba:disable Naming/QueryBoolMethods
+      getter reference : Bool  # ameba:disable Naming/QueryBoolMethods
       getter tx_hash : String
     end
 
@@ -153,7 +153,7 @@ struct Blockfrost::Transaction
 
     getter cert_index : Int32
     getter address : String
-    getter registration : Bool
+    getter registration : Bool # ameba:disable Naming/QueryBoolMethods
   end
 
   struct Delegation

@@ -33,18 +33,18 @@ module Blockfrost
   Habitat.create do
     setting cardano_api_key : String?,
       validation: :validate_cardano_api_key
-    setting cardano_api_version : String = "v0",
+    setting cardano_api_version : String = "v0", # ameba:disable Lint/UselessAssign
       validation: :validate_api_version
-    setting ipfs_api_key : String?,
+    setting ipfs_api_key : String?, # ameba:disable Lint/UselessAssign
       validation: :validate_ipfs_api_key
-    setting ipfs_api_version : String = "v0",
+    setting ipfs_api_version : String = "v0", # ameba:disable Lint/UselessAssign
       validation: :validate_api_version
-    setting default_order : QueryOrder? = nil
-    setting default_count_per_page : Int32? = nil,
+    setting default_order : QueryOrder? = nil      # ameba:disable Lint/UselessAssign
+    setting default_count_per_page : Int32? = nil, # ameba:disable Lint/UselessAssign
       validation: :validate_count_per_page
-    setting retries_in_concurrent_requests : Int32 = 5,
+    setting retries_in_concurrent_requests : Int32 = 5, # ameba:disable Lint/UselessAssign
       validation: :validate_retries_in_concurrent_requests
-    setting sleep_between_retries_ms : Int32 = 500,
+    setting sleep_between_retries_ms : Int32 = 500, # ameba:disable Lint/UselessAssign
       validation: :validate_sleep_between_retries_ms
   end
 

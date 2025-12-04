@@ -48,7 +48,7 @@ struct Blockfrost::Epoch
     Array(Stake),
     "epochs/#{epoch}/stakes/#{pool_id}",
     epoch : Int32,
-    pool_id : String
+    pool_id : String # ameba:disable Lint/UselessAssign
   )
 
   Blockfrost.gets_all_with_pagination(
@@ -63,7 +63,7 @@ struct Blockfrost::Epoch
     Array(String),
     "epochs/#{epoch}/blocks/#{pool_id}",
     epoch : Int32,
-    pool_id : String
+    pool_id : String # ameba:disable Lint/UselessAssign
   )
 
   def self.parameters(epoch : Int32)

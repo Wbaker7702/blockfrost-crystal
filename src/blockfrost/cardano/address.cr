@@ -26,22 +26,22 @@ struct Blockfrost::Address
     :utxos,
     Array(UTXO),
     "addresses/#{address}/utxos",
-    address : String
+    address : String # ameba:disable Lint/UselessAssign
   )
 
   Blockfrost.gets_all_scoped_with_order_and_pagination(
     :utxos_of_asset,
     Array(UTXO),
     "addresses/#{address}/utxos/#{asset}",
-    address : String,
-    asset : String
+    address : String, # ameba:disable Lint/UselessAssign
+    asset : String    # ameba:disable Lint/UselessAssign
   )
 
   Blockfrost.gets_all_with_order_and_pagination_and_from_to(
     :transactions,
     Array(Transaction),
     "addresses/#{address}/transactions",
-    address : String
+    address : String # ameba:disable Lint/UselessAssign
   )
 
   struct Extended
