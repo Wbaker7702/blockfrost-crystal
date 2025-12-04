@@ -2,7 +2,7 @@ struct Blockfrost::Account
   include JSON::Serializable
 
   getter stake_address : String
-  getter active : Bool
+  getter active : Bool # ameba:disable Naming/QueryBoolMethods
   getter active_epoch : Int32?
   @[JSON::Field(converter: Blockfrost::Int128FromString)]
   getter controlled_amount : Int128

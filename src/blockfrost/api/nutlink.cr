@@ -14,22 +14,20 @@ struct Blockfrost::Nutlink
     :tickers,
     Array(Ticker),
     "nutlink/#{address}/tickers",
-    address : String
+    address : String # ameba:disable Lint/UselessAssign
   )
-
   Blockfrost.gets_all_scoped_with_order_and_pagination(
     :ticker_records_for_address,
     Array(Ticker::Record),
     "nutlink/#{address}/tickers/#{ticker}",
-    address : String,
-    ticker : String
+    address : String, # ameba:disable Lint/UselessAssign
+    ticker : String   # ameba:disable Lint/UselessAssign
   )
-
   Blockfrost.gets_all_with_order_and_pagination(
     :ticker_records,
     Array(Ticker::Record),
     "nutlink/tickers/#{ticker}",
-    ticker : String
+    ticker : String # ameba:disable Lint/UselessAssign
   )
 
   struct Ticker

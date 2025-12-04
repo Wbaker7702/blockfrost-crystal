@@ -1,7 +1,7 @@
 struct Blockfrost::Health
   include JSON::Serializable
 
-  getter is_healthy : Bool
+  getter is_healthy : Bool # ameba:disable Naming/QueryBoolMethods
 
   # Return backend status as a boolean. Your application should handle
   # situations when backend for the given chain is unavailable.
@@ -10,6 +10,7 @@ struct Blockfrost::Health
   # Blockfrost::Health.get.is_healthy
   # # => true
   # ```
+
   def self.get
     Health.from_json(Client.get("health"))
   end
@@ -20,9 +21,12 @@ struct Blockfrost::Health
   # Blockfrost::Health.is_healthy?
   # # => true
   # ```
+  # ameba:disable Naming/PredicateName
   def self.is_healthy?
     get.is_healthy
   end
+
+  # ameba:enable Naming/PredicateName
 
   # This endpoint provides the current time. Your application might use this to
   # verify if the client clock is not out of sync.

@@ -160,7 +160,7 @@ describe Blockfrost do
   end
 
   {% for network in Blockfrost.annotation(Blockfrost::CardanoNetworks)
-                      .args.first.reject { |n| n == :testnet }.map(&.id) %}
+                      .args.first.reject { |network| network == :testnet }.map(&.id) %}
     describe ".cardano_{{network.id}}?" do
       it "tests if the current network is {{network.id}} or not" do
         Blockfrost.temp_config(

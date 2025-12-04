@@ -11,14 +11,14 @@ struct Blockfrost::Metadata
     :label_json_content,
     Array(ContentJSON),
     "metadata/txs/labels/#{label}",
-    label : String
+    label : String # ameba:disable Lint/UselessAssign
   )
 
   Blockfrost.gets_all_with_order_and_pagination(
     :label_cbor_content,
     Array(ContentCBOR),
     "metadata/txs/labels/#{label}/cbor",
-    label : String
+    label : String # ameba:disable Lint/UselessAssign
   )
 
   struct Label

@@ -22,10 +22,10 @@ describe Blockfrost::Pool do
     end
 
     it "fetches all pool ids within a page range concurrently" do
-      1.upto(3).each do |p|
+      1.upto(3).each do |page|
         WebMock.stub(:get,
-          "https://cardano-testnet.blockfrost.io/api/v0/pools?count=100&page=#{p}")
-          .to_return(body_io: read_fixture("pool/all-ids-page-#{p}.200.json"))
+          "https://cardano-testnet.blockfrost.io/api/v0/pools?count=100&page=#{page}")
+          .to_return(body_io: read_fixture("pool/all-ids-page-#{page}.200.json"))
       end
 
       Blockfrost::Pool.all_ids(1..3)
@@ -37,9 +37,9 @@ describe Blockfrost::Pool do
       WebMock.stub(:get,
         "https://cardano-testnet.blockfrost.io/api/v0/pools?count=100&page=1")
         .to_return(body_io: read_fixture("pool/all-ids-page-1.200.json"))
-      2.upto(3).each do |p|
+      2.upto(3).each do |page|
         WebMock.stub(:get,
-          "https://cardano-testnet.blockfrost.io/api/v0/pools?count=100&page=#{p}")
+          "https://cardano-testnet.blockfrost.io/api/v0/pools?count=100&page=#{page}")
           .to_return(body: body_429, status: 429)
       end
 
@@ -55,9 +55,9 @@ describe Blockfrost::Pool do
 
     it "raises if an exception is raised on one of the requests" do
       body_500 = read_fixture("pool/all-ids.500.json").gets_to_end
-      1.upto(3).each do |p|
+      1.upto(3).each do |page|
         WebMock.stub(:get,
-          "https://cardano-testnet.blockfrost.io/api/v0/pools?count=100&page=#{p}")
+          "https://cardano-testnet.blockfrost.io/api/v0/pools?count=100&page=#{page}")
           .to_return(body: body_500, status: 500)
       end
 
@@ -108,9 +108,9 @@ describe Blockfrost::Pool do
     end
 
     it "fetches all pool ids with stake within a page range concurrently" do
-      1.upto(2).each do |p|
+      1.upto(2).each do |page|
         WebMock.stub(:get,
-          "https://cardano-testnet.blockfrost.io/api/v0/pools/extended?count=100&page=#{p}")
+          "https://cardano-testnet.blockfrost.io/api/v0/pools/extended?count=100&page=#{page}")
           .to_return(body_io: read_fixture("pool/all-ids-with-stake.200.json"))
       end
 
@@ -141,9 +141,9 @@ describe Blockfrost::Pool do
     end
 
     it "fetches all the retired pool ids concurrently" do
-      1.upto(2).each do |p|
+      1.upto(2).each do |page|
         WebMock.stub(:get,
-          "https://cardano-testnet.blockfrost.io/api/v0/pools/retired?count=100&page=#{p}")
+          "https://cardano-testnet.blockfrost.io/api/v0/pools/retired?count=100&page=#{page}")
           .to_return(body_io: read_fixture("pool/retired-ids.200.json"))
       end
 
@@ -174,9 +174,9 @@ describe Blockfrost::Pool do
     end
 
     it "fetches all the retiring pool ids concurrently" do
-      1.upto(2).each do |p|
+      1.upto(2).each do |page|
         WebMock.stub(:get,
-          "https://cardano-testnet.blockfrost.io/api/v0/pools/retiring?count=100&page=#{p}")
+          "https://cardano-testnet.blockfrost.io/api/v0/pools/retiring?count=100&page=#{page}")
           .to_return(body_io: read_fixture("pool/retiring-ids.200.json"))
       end
 
@@ -243,9 +243,9 @@ describe Blockfrost::Pool do
     end
 
     it "fetches a pool's history concurrently" do
-      1.upto(2).each do |p|
+      1.upto(2).each do |page|
         WebMock.stub(:get,
-          "https://cardano-testnet.blockfrost.io/api/v0/pools/#{test_pool_id}/history?count=100&page=#{p}")
+          "https://cardano-testnet.blockfrost.io/api/v0/pools/#{test_pool_id}/history?count=100&page=#{page}")
           .to_return(body_io: read_fixture("pool/history.200.json"))
       end
 
@@ -356,9 +356,9 @@ describe Blockfrost::Pool do
     end
 
     it "fetches a pool's delegators concurrently" do
-      1.upto(2).each do |p|
+      1.upto(2).each do |page|
         WebMock.stub(:get,
-          "https://cardano-testnet.blockfrost.io/api/v0/pools/#{test_pool_id}/delegators?count=100&page=#{p}")
+          "https://cardano-testnet.blockfrost.io/api/v0/pools/#{test_pool_id}/delegators?count=100&page=#{page}")
           .to_return(body_io: read_fixture("pool/delegators.200.json"))
       end
 
@@ -384,9 +384,9 @@ describe Blockfrost::Pool do
       WebMock.stub(:get,
         "https://cardano-testnet.blockfrost.io/api/v0/pools/#{test_pool_id}")
         .to_return(body_io: read_fixture("pool/get.200.json"))
-      1.upto(2).each do |p|
+      1.upto(2).each do |page|
         WebMock.stub(:get,
-          "https://cardano-testnet.blockfrost.io/api/v0/pools/#{test_pool_id}/delegators?count=100&page=#{p}")
+          "https://cardano-testnet.blockfrost.io/api/v0/pools/#{test_pool_id}/delegators?count=100&page=#{page}")
           .to_return(body_io: read_fixture("pool/delegators.200.json"))
       end
 

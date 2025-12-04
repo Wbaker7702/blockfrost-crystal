@@ -7,7 +7,7 @@ struct Blockfrost::Token
     include Shared::TokenFields
 
     getter decimals : Int32?
-    getter has_nft_onchain_metadata : Bool
+    getter has_nft_onchain_metadata : Bool # ameba:disable Naming/QueryBoolMethods
 
     def to_unit : Float64
       return quantity.to_f unless places = decimals

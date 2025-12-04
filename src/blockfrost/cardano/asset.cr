@@ -40,7 +40,7 @@ struct Blockfrost::Asset
     :all_of_policy,
     Array(Abbreviated),
     "assets/policy/#{policy_id}",
-    policy_id : String
+    policy_id : String # ameba:disable Lint/UselessAssign
   )
 
   struct Abbreviated

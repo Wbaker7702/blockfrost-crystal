@@ -33,7 +33,7 @@ struct Blockfrost::Script
     :redeemers,
     Array(Redeemer),
     "scripts/#{script_hash}/redeemers",
-    script_hash : String
+    script_hash : String # ameba:disable Lint/UselessAssign
   )
 
   struct Abbreviated

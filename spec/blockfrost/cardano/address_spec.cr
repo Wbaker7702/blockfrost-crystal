@@ -93,9 +93,9 @@ describe Blockfrost::Address do
     end
 
     it "fetches the address' current utxos concurrently" do
-      1.upto(2) do |p|
+      1.upto(2) do |page|
         WebMock.stub(:get,
-          "https://cardano-testnet.blockfrost.io/api/v0/addresses/#{test_address}/utxos?order=desc&count=100&page=#{p}")
+          "https://cardano-testnet.blockfrost.io/api/v0/addresses/#{test_address}/utxos?order=desc&count=100&page=#{page}")
           .to_return(body_io: read_fixture("address/utxos.200.json"))
       end
 
@@ -151,9 +151,9 @@ describe Blockfrost::Address do
     end
 
     it "fetches the address' current utxos for a given asset concurrently" do
-      1.upto(2) do |p|
+      1.upto(2) do |page|
         WebMock.stub(:get,
-          "https://cardano-testnet.blockfrost.io/api/v0/addresses/#{test_address}/utxos/#{test_asset}?count=100&page=#{p}")
+          "https://cardano-testnet.blockfrost.io/api/v0/addresses/#{test_address}/utxos/#{test_asset}?count=100&page=#{page}")
           .to_return(body_io: read_fixture("address/utxos-of-asset.200.json"))
       end
 
@@ -207,9 +207,9 @@ describe Blockfrost::Address do
     end
 
     it "fetches the address' transactions concurrently" do
-      1.upto(2) do |p|
+      1.upto(2) do |page|
         WebMock.stub(:get,
-          "https://cardano-testnet.blockfrost.io/api/v0/addresses/#{test_address}/transactions?order=desc&count=100&page=#{p}&from=8929261&to=9999269:10")
+          "https://cardano-testnet.blockfrost.io/api/v0/addresses/#{test_address}/transactions?order=desc&count=100&page=#{page}&from=8929261&to=9999269:10")
           .to_return(body_io: read_fixture("address/transactions.200.json"))
       end
 

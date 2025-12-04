@@ -297,9 +297,9 @@ describe Blockfrost::Block do
     end
 
     it "fetches addresses with transactions for a given block height concurrently" do
-      1.upto(3) do |p|
+      1.upto(3) do |page|
         WebMock.stub(:get,
-          "https://cardano-testnet.blockfrost.io/api/v0/blocks/15243593/addresses?count=100&page=#{p}")
+          "https://cardano-testnet.blockfrost.io/api/v0/blocks/15243593/addresses?count=100&page=#{page}")
           .to_return(body_io: read_fixture("block/addresses.200.json"))
       end
 
